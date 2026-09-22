@@ -70,16 +70,4 @@ src/
 └── App.tsx                     # Routing
 ```
 
-## Funktionalitet
 
-- [x] Se plakater i et grid
-- [x] Filtrere plakater efter genre
-- [x] Se detaljer om en enkelt plakat
-- [ ] Lægge plakater i indkøbskurv
-- [ ] Se indholdet af indkøbskurven
-- [ ] Ændre antal / fjerne plakater fra kurven (bonus)
-- [ ] Gemme kurven i localStorage (bonus)
-
-## Hvad jeg ville gøre anderledes
-
-*(Udfyldes senere, til fremlæggelsen.)*
