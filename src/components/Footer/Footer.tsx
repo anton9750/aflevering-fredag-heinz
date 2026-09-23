@@ -9,7 +9,7 @@ const Footer = styled.footer`
   border-top: 1px solid #ddd;
 `;
 
-//selve stylingen af min footer
+// Selve stylingen af footeren
 
 const FooterContent = styled.div`
   display: grid;
@@ -24,7 +24,7 @@ const FooterContent = styled.div`
   }
 `;
 
-//SELVE STYLINGER AF DIVEN SOM INDEHOLDER DATAEN
+// Styling af de to kolonner, som indeholder virksomhedens data
 
 const FooterColumn = styled.div`
   display: flex;
@@ -49,14 +49,14 @@ function Footeren() {
     <Footer>
       <FooterContent>
 
-        //venstre
+        {/* Venstre kolonne: navn og adresse */}
         <FooterColumn>
           <CompanyName>WALLYWOOD</CompanyName>
           <Info>Øster Uttrupvej 1</Info>
           <Info>9000 Aalborg</Info>
         </FooterColumn>
 
-        //højre
+        {/* Højre kolonne: kontaktinformation */}
         <FooterColumn>
           <Info>CVR: 12345678</Info>
           <Info>MAIL: info@wallywood.dk</Info>
