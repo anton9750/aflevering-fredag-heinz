@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { breakpoints } from "../GlobalStyles/breakpoints";
+import { useCart } from "../Context/useCart"
 
 const Nav = styled.nav`
   display: flex;
@@ -119,7 +120,24 @@ const Basket = styled.div`
   }
 `;
 
+const BasketCount = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.2rem;
+  height: 1.2rem;
+  padding: 0 0.3rem;
+  margin-left: 0.3rem;
+  border-radius: 999px;
+  background-color: #d97757;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+`;
+
 const Navbar: React.FC = () => {
+  const { items } = useCart();
+
   return (
     <Nav>
       <Logo>
@@ -141,6 +159,7 @@ const Navbar: React.FC = () => {
       <Basket>
         <Link to="/kurv" aria-label="Gå til kurv">
           🛒
+          {items.length > 0 && <BasketCount>{items.length}</BasketCount>}
         </Link>
       </Basket>
     </Nav>

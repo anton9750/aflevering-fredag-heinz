@@ -8,6 +8,7 @@ import KontaktOs from "./pages/kontakt";
 import Login from "./pages/loginpage";
 import Footeren from "./components/Footer/Footer";
 import PosterGrid from "./pages/posterGrid";
+import CartPage from "./pages/cartPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/om-os" element={<OmOs />} />
         <Route path="/kontakt-os" element={<KontaktOs />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/kurv" element={<CartPage />} />
       </Routes>
 
       <Footeren />

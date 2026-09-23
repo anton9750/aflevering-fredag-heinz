@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { breakpoints } from "../GlobalStyles/breakpoints";
+import { useCart } from "../Context/useCart"
 
 type Poster = {
   id: number;
@@ -103,6 +104,7 @@ const PosterImage = styled.img`
 
 function PosterDetail() {
   const { id } = useParams();
+  const { addToCart } = useCart();
 
   const { data, loading, error } = useFetch<Poster>(
     `http://localhost:3000/api/posters/${id}`
@@ -138,7 +140,19 @@ function PosterDetail() {
         <Price>Pris: {data.price},00 DKK</Price>
 
         <Buttons>
-          <CartButton>Læg i kurv</CartButton>
+          <CartButton
+            onClick={() =>
+              addToCart({
+                id: data.id,
+                name: data.name,
+                image: data.image,
+                price: data.price,
+                quantity: 1,
+              })
+            }
+          >
+            Læg i kurv
+          </CartButton>
 
           <FavoriteButton>♡</FavoriteButton>
         </Buttons>
