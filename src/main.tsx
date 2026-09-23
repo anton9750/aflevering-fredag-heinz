@@ -3,11 +3,13 @@ import { createRoot } from 'react-dom/client'
 
 import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom';
+import { GlobalStyle } from './GlobalStyles/GlobalStyle';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-    <App />
+      <GlobalStyle />
+      <App />
     </BrowserRouter>
   </StrictMode>,
 )
