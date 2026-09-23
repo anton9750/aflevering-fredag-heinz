@@ -2,7 +2,7 @@
 
 Wallywood er en webshop for filmplakater, bygget som eksamensprojekt til faget **Avanceret Frontend** (H1WE010126, TechCollege).
 
-Brugeren kan browse filmplakater sorteret efter genre, åbne den enkelte plakat for at se flere detaljer, og (under udvikling) lægge plakater i en indkøbskurv.
+Brugeren kan browse filmplakater sorteret efter genre, åbne den enkelte plakat for at se flere detaljer, lægge plakater i en indkøbskurv og se indholdet af kurven.
 
 ## Teknologier
 
@@ -10,6 +10,7 @@ Brugeren kan browse filmplakater sorteret efter genre, åbne den enkelte plakat 
 - **Vite** som build-tool
 - **React Router** til routing
 - **styled-components** til styling
+- **React Context** til global kurv-state
 - Data hentes fra et selvbygget REST API (bygget i faget Dataservice- og integration)
 
 ## Kom i gang
@@ -43,31 +44,59 @@ npm run preview   # Kører en lokal preview af build'et
 npm run lint      # Kører ESLint
 ```
 
+## Funktioner
+
+- Se plakater opdelt efter genre
+- Åbne en plakat og se dens detaljer
+- Lægge en plakat i indkøbskurven
+- Se indholdet af indkøbskurven, inkl. samlet pris
+- Fjerne en plakat fra kurven
+
+## Indkøbskurv
+
+Kurven er implementeret med React Context, så alle sider har adgang til samme kurv-state uden prop-drilling.
+
+- `Context/Cart-Context.ts` – definerer `CartItem`-typen og selve context-objektet
+- `Context/cartContent.tsx` – `CartProvider`-komponenten, der holder kurvens state (`items`) og logik (`addToCart`, `removeFromCart`)
+- `Context/useCart.ts` – hook der giver adgang til kurven fra en hvilken som helst komponent
+
+`CartProvider` pakker hele appen ind i `main.tsx`, så `useCart()` kan bruges overalt – f.eks. på plakat-detaljesiden (læg i kurv), i navbaren (antal varer i kurven) og på `/kurv` (se og fjern varer).
+
 ## Projektstruktur
 
 ```
 src/
-├── assets/                 # Billeder og ikoner
+├── assets/                     # Billeder og ikoner
 ├── components/
-│   ├── genreFilter/        # Filtrering af plakater efter genre
+│   ├── genreFilter/            # Filtrering af plakater efter genre
 │   ├── posterList/
-│   └── types/               # Delte TypeScript-typer
-├── GlobalStyles/            # Tema til styled-components
+│   ├── Footer/
+│   └── types/                  # Delte TypeScript-typer
+├── Context/
+│   ├── Cart-Context.ts         # Kurv-typer og context-objekt
+│   ├── cartContent.tsx         # CartProvider (holder kurv-state)
+│   └── useCart.ts              # Hook til at tilgå kurven
+├── GlobalStyles/                # Tema, globale styles og breakpoints
 ├── hooks/
-│   ├── useFetch.tsx          # Generisk hook til at hente data fra API'et
+│   ├── useFetch.tsx             # Generisk hook til at hente data fra API'et
 │   └── userandomposters.tsx
 ├── pages/
 │   ├── home.tsx
-│   ├── plakater.tsx           # Oversigt med genre-filter (layout for /plakater)
-│   ├── posterGrid.tsx          # Grid med plakater (indeks-route under /plakater)
-│   ├── posterDetailPage.tsx    # Detaljevisning af en enkelt plakat
+│   ├── plakater.tsx             # Oversigt med genre-filter (layout for /plakater)
+│   ├── posterGrid.tsx           # Grid med plakater (indeks-route under /plakater)
+│   ├── posterDetailPage.tsx     # Detaljevisning af en enkelt plakat + "læg i kurv"
+│   ├── cartPage.tsx             # Kurv-siden (/kurv)
 │   ├── om-os.tsx
 │   ├── kontakt.tsx
 │   └── loginpage.tsx
 ├── partials/
-│   ├── Navbar.tsx
-│   └── cards.tsx               # Genanvendeligt plakat-kort
-└── App.tsx                     # Routing
+│   ├── Navbar.tsx                # Inkl. antal varer i kurven
+│   └── cards.tsx                 # Genanvendeligt plakat-kort
+├── App.tsx                       # Routing
+└── main.tsx                      # Wrapper: BrowserRouter + CartProvider
 ```
 
+## Kommende arbejde
 
+- Mulighed for at ændre antal af en plakat i kurven
+- Gemme kurven i `localStorage`, så den ikke nulstilles ved genindlæsning
