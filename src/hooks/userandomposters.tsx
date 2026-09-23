@@ -32,7 +32,7 @@ export function useRandomPosters(url: string, count: number) {
 
      return response.json();
       })
-
+        //celebrationnn is around ussss 
       .then((posters: Poster[]) => {
 
         const randomPosters = [...posters]

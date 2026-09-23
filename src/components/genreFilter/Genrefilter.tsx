@@ -11,9 +11,11 @@ const Filters = styled.aside`
   padding-right: 1.5rem;
 
   @media (max-width: ${breakpoints.tablet}) {
-    /* Sidebaren bliver til en vandret, scrollbar liste over genren */
+  
     border-right: none;
-    border-bottom: 1px solid #ddd;
+
+
+    border-bottom: 1px solid #dddd;
     padding-right: 0;
     padding-bottom: 1rem;
     display: flex;

@@ -56,9 +56,14 @@ const ItemQuantity = styled.p`
 
 const RemoveButton = styled.button`
   padding: 0.5rem 1rem;
+
   background-color: #d9c0b5;
+
   border: 1px solid #8c756d;
+
+
   border-radius: 3px;
+
   cursor: pointer;
 
   &:hover {
@@ -67,62 +72,96 @@ const RemoveButton = styled.button`
 `;
 
 const Summary = styled.div`
+
   margin-top: 1.5rem;
+
   padding-top: 1rem;
+
   border-top: 2px solid #2c2c2c;
+
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
 `;
 
 const Total = styled.p`
+
   font-size: 1.2rem;
+
   font-weight: 700;
+
   margin: 0;
 `;
 
 function CartPage() {
+
   const { items, removeFromCart } = useCart();
 
   if (items.length === 0) {
+
     return (
+
       <Wrapper>
+
         <Title>Din kurv</Title>
+
         <EmptyText>
+
           Din kurv er tom. <Link to="/plakater">Find en plakat</Link>
+
         </EmptyText>
+
       </Wrapper>
     );
   }
 
   const total = items.reduce(
+
     (sum, item) => sum + Number(item.price) * item.quantity,
     0
   );
 
   return (
+
     <Wrapper>
+
       <Title>Din kurv</Title>
 
       {items.map((item) => (
+
         <CartItemRow key={item.id}>
+
           <ItemImage src={item.image} alt={item.name} />
 
           <ItemInfo>
+
             <ItemName>{item.name}</ItemName>
+
             <ItemPrice>Pris: {item.price},00 DKK</ItemPrice>
+
             <ItemQuantity>Antal: {item.quantity}</ItemQuantity>
+
           </ItemInfo>
 
           <RemoveButton onClick={() => removeFromCart(item.id)}>
+
             Fjern
-          </RemoveButton>
+
+          </RemoveButton>''
+
         </CartItemRow>
       ))}
 
       <Summary>
+
         <Total>Total: {total},00 DKK</Total>
+
+
+
       </Summary>
+      
     </Wrapper>
   );
 }

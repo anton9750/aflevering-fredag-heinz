@@ -10,7 +10,9 @@ export type CartItem = {
 
 export type CartContextType = {
   items: CartItem[];
+
   addToCart: (poster: CartItem) => void;
+  
   removeFromCart: (id: number) => void;
 };
 

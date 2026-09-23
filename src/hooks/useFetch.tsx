@@ -11,7 +11,7 @@ export function useFetch<T>(url: string) {
   useEffect(() => {
     fetch(url)
       .then((response) => {
-        //jeg laver denne del senere
+      //babayaga!
         if (!response.ok) {
 
           throw new Error("Something went wrong");

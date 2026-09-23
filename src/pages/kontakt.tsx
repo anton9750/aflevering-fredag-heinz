@@ -23,24 +23,38 @@ const FormGroup = styled.div`
 `;
 
 const Label = styled.label`
+
   display: block;
+
   font-size: 10px;
+
   color: #333;
+
   margin-bottom: 3px;
 `;
 
 const Required = styled.span`
+
   color: #e8753d;
 `;
 
 const Input = styled.input`
+
   box-sizing: border-box;
+
   width: 220px;
+
   height: 18px;
+
   padding: 2px 6px;
+
+
   border: none;
+
   border-bottom: 1px solid #d9c4bb;
+
   background-color: #f6f3f2;
+
   font-size: 9px;
 
   &::placeholder {
@@ -53,13 +67,21 @@ const Input = styled.input`
 `;
 
 const Textarea = styled.textarea`
+
   box-sizing: border-box;
+
   width: 220px;
+
   height: 78px;
+
   padding: 6px;
   border: none;
   border-bottom: 1px solid #d9c4bb;
+
+
+
   background-color: #f6f3f2;
+
   font-size: 9px;
   resize: none;
 
@@ -79,12 +101,18 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.button`
+
   width: 67px;
+
   height: 19px;
   border: 1px solid #9c8174;
   border-radius: 2px;
+
+
   background-color: #d8bfb3;
   color: #222;
+
+  
   font-size: 9px;
   cursor: pointer;
 
