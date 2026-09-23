@@ -1,21 +1,26 @@
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useCart } from "../Context/useCart"
+import { useCart } from "../Context/useCart";
 import { breakpoints } from "../GlobalStyles/breakpoints";
 
+// Wrapper til hele kurvsiden
 const Wrapper = styled.section`
   padding: 2rem 1rem;
 `;
 
+// Overskrift til siden
 const Title = styled.h1`
   font-size: 1.8rem;
   margin: 0 0 1.5rem;
 `;
 
+// Tekst når kurven er tom
 const EmptyText = styled.p`
   font-size: 1rem;
 `;
 
+// Række for hvert produkt i kurven
 const CartItemRow = styled.article`
   display: flex;
   align-items: center;
@@ -23,11 +28,13 @@ const CartItemRow = styled.article`
   padding: 1rem 0;
   border-bottom: 1px solid #f0f0f0;
 
+  // Tilpasning til mobil
   @media (max-width: ${breakpoints.mobile}) {
     flex-wrap: wrap;
   }
 `;
 
+// Styling af produktbilledet
 const ItemImage = styled.img`
   width: 70px;
   height: 100px;
@@ -35,25 +42,30 @@ const ItemImage = styled.img`
   flex-shrink: 0;
 `;
 
+// Indeholder information om produktet
 const ItemInfo = styled.div`
   flex: 1;
 `;
 
+// Produktets navn
 const ItemName = styled.h2`
   font-size: 1.1rem;
   margin: 0 0 0.4rem;
 `;
 
+// Produktets pris
 const ItemPrice = styled.p`
   margin: 0;
   font-size: 0.9rem;
 `;
 
+// Antal af produktet
 const ItemQuantity = styled.p`
   margin: 0;
   font-size: 0.9rem;
 `;
 
+// Knap til at fjerne produktet
 const RemoveButton = styled.button`
   padding: 0.5rem 1rem;
 
@@ -61,18 +73,18 @@ const RemoveButton = styled.button`
 
   border: 1px solid #8c756d;
 
-
   border-radius: 3px;
 
   cursor: pointer;
 
+  // Ændrer farve ved hover
   &:hover {
     background-color: #cdb0a4;
   }
 `;
 
+// Viser samlet pris
 const Summary = styled.div`
-
   margin-top: 1.5rem;
 
   padding-top: 1rem;
@@ -86,8 +98,8 @@ const Summary = styled.div`
   align-items: center;
 `;
 
+// Styling af totalprisen
 const Total = styled.p`
-
   font-size: 1.2rem;
 
   font-weight: 700;
@@ -95,10 +107,13 @@ const Total = styled.p`
   margin: 0;
 `;
 
+// Komponent til kurvsiden
 function CartPage() {
 
+  // Henter varer og remove-funktion fra context
   const { items, removeFromCart } = useCart();
 
+  // Viser besked hvis kurven er tom
   if (items.length === 0) {
 
     return (
@@ -117,6 +132,7 @@ function CartPage() {
     );
   }
 
+  // Beregner den samlede pris
   const total = items.reduce(
 
     (sum, item) => sum + Number(item.price) * item.quantity,
@@ -129,14 +145,17 @@ function CartPage() {
 
       <Title>Din kurv</Title>
 
+      {/* Gennemgår alle varer i kurven */}
       {items.map((item) => (
 
         <CartItemRow key={item.id}>
 
+          {/* Viser produktets billede */}
           <ItemImage src={item.image} alt={item.name} />
 
           <ItemInfo>
 
+            {/* Viser produktets information */}
             <ItemName>{item.name}</ItemName>
 
             <ItemPrice>Pris: {item.price},00 DKK</ItemPrice>
@@ -145,25 +164,26 @@ function CartPage() {
 
           </ItemInfo>
 
+          {/* Fjerner produktet fra kurven */}
           <RemoveButton onClick={() => removeFromCart(item.id)}>
 
             Fjern
 
-          </RemoveButton>''
+          </RemoveButton>
 
         </CartItemRow>
       ))}
 
+      {/* Viser samlet pris */}
       <Summary>
 
         <Total>Total: {total},00 DKK</Total>
 
-
-
       </Summary>
-      
+
     </Wrapper>
   );
 }
 
 export default CartPage;
+

@@ -49,14 +49,14 @@ function Footeren() {
     <Footer>
       <FooterContent>
 
-        {/* Venstre kolonne */}
+        //venstre
         <FooterColumn>
           <CompanyName>WALLYWOOD</CompanyName>
           <Info>Øster Uttrupvej 1</Info>
           <Info>9000 Aalborg</Info>
         </FooterColumn>
 
-        {/* Højre kolonne */}
+        //højre
         <FooterColumn>
           <Info>CVR: 12345678</Info>
           <Info>MAIL: info@wallywood.dk</Info>

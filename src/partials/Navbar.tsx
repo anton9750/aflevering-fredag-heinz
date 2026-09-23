@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { breakpoints } from "../GlobalStyles/breakpoints";
 import { useCart } from "../Context/useCart"
 
+// Styling af navigationen
 const Nav = styled.nav`
   display: flex;
 
@@ -22,6 +23,7 @@ const Nav = styled.nav`
 
   box-sizing: border-box;
 
+  // Tilpasning til tablet
   @media (max-width: ${breakpoints.tablet}) {
     flex-wrap: wrap;
     gap: 1rem;
@@ -29,6 +31,7 @@ const Nav = styled.nav`
   }
 `;
 
+// Styling af logoet
 const Logo = styled.div`
   a {
     font-size: 2.2rem;
@@ -44,6 +47,7 @@ const Logo = styled.div`
     font-family: 'Impact', sans-serif;
   }
 
+  // Mindre logo på mobil
   @media (max-width: ${breakpoints.mobile}) {
     a {
       font-size: 1.6rem;
@@ -51,6 +55,7 @@ const Logo = styled.div`
   }
 `;
 
+// Styling af navigationslinks
 const NavLinks = styled.ul`
   display: flex;
 
@@ -78,12 +83,14 @@ const NavLinks = styled.ul`
 
       transition: color 0.2s ease;
 
+      // Skifter farve ved hover
       &:hover {
         color: #d97757;
       }
     }
   }
 
+  // Gør navigationen responsiv på tablet
   @media (max-width: ${breakpoints.tablet}) {
     order: 3;
     width: 100%;
@@ -92,6 +99,7 @@ const NavLinks = styled.ul`
     overflow-x: auto;
   }
 
+  // Mindre tekst på mobil
   @media (max-width: ${breakpoints.mobile}) {
     li a {
       font-size: 0.75rem;
@@ -99,6 +107,7 @@ const NavLinks = styled.ul`
   }
 `;
 
+// Styling af kurvikonet
 const Basket = styled.div`
   a {
 
@@ -114,12 +123,14 @@ const Basket = styled.div`
 
     transition: color 0.2s ease;
 
+    // Skifter farve ved hover
     &:hover {
       color: #d97757;
     }
   }
 `;
 
+// Viser antal varer i kurven
 const BasketCount = styled.span`
   display: inline-flex;
   align-items: center;
@@ -135,15 +146,21 @@ const BasketCount = styled.span`
   font-weight: 700;
 `;
 
+// Navbar-komponenten
 const Navbar: React.FC = () => {
+
+  // Henter varer fra Cart Context
   const { items } = useCart();
 
   return (
     <Nav>
+
+      {/* Logo med link til forsiden */}
       <Logo>
         <Link to="/">WALLYWOOD</Link>
       </Logo>
 
+      {/* Navigation til de forskellige sider */}
       <NavLinks>
         <li><Link to="/">Forside</Link></li>
 
@@ -156,9 +173,12 @@ const Navbar: React.FC = () => {
         <li><Link to="/login">Login</Link></li>
       </NavLinks>
 
+      {/* Link til indkøbskurven */}
       <Basket>
         <Link to="/kurv" aria-label="Gå til kurv">
           🛒
+
+          {/* Viser antal varer hvis kurven ikke er tom */}
           {items.length > 0 && <BasketCount>{items.length}</BasketCount>}
         </Link>
       </Basket>

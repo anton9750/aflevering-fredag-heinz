@@ -4,6 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import { breakpoints } from "../GlobalStyles/breakpoints";
 import { useCart } from "../Context/useCart"
 
+// Type for en plakat
 type Poster = {
   id: number;
   name: string;
@@ -19,6 +20,7 @@ type Poster = {
   }[];
 };
 
+// Grid-layout til produktdetaljer og billede
 const Product = styled.section`
   display: grid;
   grid-template-columns: 1fr 300px;
@@ -33,36 +35,43 @@ const Product = styled.section`
   }
 `;
 
+// Container til produktdetaljerne
 const Details = styled.div`
   padding-top: 0;
 `;
 
+// Styling af produktnavnet
 const ProductName = styled.h2`
   font-size: 1.5rem;
   margin: 0 0 1.5rem;
 `;
 
+// Styling af produktbeskrivelsen
 const Description = styled.p`
   max-width: 550px;
   line-height: 1.45;
   margin: 0 0 1.5rem;
 `;
 
+// Styling af produktinformation
 const Info = styled.p`
   margin: 0 0 1.5rem;
   font-size: 0.9rem;
 `;
 
+// Styling af produktets pris
 const Price = styled.h2`
   font-size: 1.2rem;
   margin: 0 0 1rem;
 `;
 
+// Container til knapperne
 const Buttons = styled.div`
   display: flex;
   gap: 0.8rem;
 `;
 
+// Knap til at tilføje produktet til kurven
 const CartButton = styled.button`
   padding: 0.6rem 1.3rem;
   background-color: #d9c0b5;
@@ -75,6 +84,7 @@ const CartButton = styled.button`
   }
 `;
 
+// Knap til favoritter
 const FavoriteButton = styled.button`
   width: 42px;
   height: 38px;
@@ -89,6 +99,7 @@ const FavoriteButton = styled.button`
   }
 `;
 
+// Styling af produktbilledet
 const PosterImage = styled.img`
   width: 100%;
   max-width: 300px;
@@ -102,22 +113,31 @@ const PosterImage = styled.img`
   }
 `;
 
+// Komponent til visning af en enkelt plakat
 function PosterDetail() {
+
+  // Henter id fra URL-parametrene
   const { id } = useParams();
+
+  // Henter addToCart-funktionen fra Cart Context
   const { addToCart } = useCart();
 
+  // Henter produktdata fra API'et
   const { data, loading, error } = useFetch<Poster>(
     `http://localhost:3000/api/posters/${id}`
   );
 
+  // Viser loading mens data hentes
   if (loading) {
     return <p>Loading...</p>;
   }
 
+  // Viser fejl hvis data ikke kan hentes
   if (error) {
     return <p>Error: {error}</p>;
   }
 
+  // Tjekker om der findes produktdata
   if (!data) {
     return <p>Poster not found</p>;
   }
@@ -125,20 +145,27 @@ function PosterDetail() {
   return (
     <Product>
       <Details>
+
+        {/* Produktets navn */}
         <ProductName>{data.name}</ProductName>
 
+        {/* Produktets beskrivelse */}
         <Description>
           {data.description || "Ingen beskrivelse tilgængelig."}
         </Description>
 
+        {/* Produktets størrelse */}
         <Info>
           Størrelse: {data.width} x {data.height} cm
         </Info>
 
+        {/* Produktets varenummer */}
         <Info>Varenummer (SKU): {data.id}</Info>
 
+        {/* Produktets pris */}
         <Price>Pris: {data.price},00 DKK</Price>
 
+        {/* Knapper til kurv og favorit */}
         <Buttons>
           <CartButton
             onClick={() =>
@@ -158,6 +185,7 @@ function PosterDetail() {
         </Buttons>
       </Details>
 
+      {/* Viser produktets billede */}
       <PosterImage src={data.image} alt={data.name} />
     </Product>
   );

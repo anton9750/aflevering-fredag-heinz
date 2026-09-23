@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import AboutImageFile from "../assets/logo.png"
 
+// Styling af hele "Om os"-siden
 const Page = styled.main`
 
   max-width: 1200px;
@@ -10,6 +11,7 @@ const Page = styled.main`
   padding: 1rem 1.5rem 0;
 `;
 
+// Styling af sidens overskrift
 const Heading = styled.h1`
 
   color: #d97757;
@@ -20,6 +22,7 @@ const Heading = styled.h1`
   margin: 0 0 1.5rem;
 `;
 
+// Grid-layout til tekst og billede
 const Content = styled.div`
   display: grid;
 
@@ -30,17 +33,20 @@ const Content = styled.div`
   align-items: start;
 `;
 
+// Styling af tekstområdet
 const Text = styled.div`
   font-size: 0.85rem;
 
   line-height: 1.4;
 `;
 
+// Styling af de enkelte afsnit
 const Paragraph = styled.p`
 
   margin: 0 0 1.5rem;
 `;
 
+// Styling af billedet
 const AboutImage = styled.img`
 
   width: 100%;
@@ -51,14 +57,18 @@ const AboutImage = styled.img`
   display: block;
 `;
 
+// "Om os"-komponenten
 function OmOs() {
   return (
     <Page>
 
+      {/* Sidens overskrift */}
       <Heading>Om os</Heading>
 
       <Content>
         <Text>
+
+          {/* Første tekstafsnit */}
           <Paragraph>
 
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
@@ -69,6 +79,7 @@ function OmOs() {
 
           </Paragraph>
 
+          {/* Andet tekstafsnit */}
           <Paragraph>
 
             Phasellus faucibus libero eu malesuada tristique. Donec tristique
@@ -78,6 +89,7 @@ function OmOs() {
 
           </Paragraph>
 
+          {/* Tredje tekstafsnit */}
           <Paragraph>
 
 
@@ -88,7 +100,7 @@ function OmOs() {
             congue velit.
           </Paragraph>
 
-
+          {/* Fjerde tekstafsnit */}
           <Paragraph>
 
 
@@ -101,6 +113,7 @@ function OmOs() {
 
           </Paragraph>
 
+          {/* Femte tekstafsnit */}
           <Paragraph>
 
 
@@ -112,7 +125,7 @@ function OmOs() {
           </Paragraph>
 
           
-
+          {/* Sjette tekstafsnit */}
           <Paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
             scelerisque ac ipsum sed faucibus. Vivamus mollis sagittis
@@ -121,6 +134,7 @@ function OmOs() {
           </Paragraph>
         </Text>
 
+        {/* Logo/billede på siden */}
         <AboutImage
           src={AboutImageFile}
           alt="WALLYWOOD"
