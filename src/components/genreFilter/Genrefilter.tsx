@@ -58,19 +58,29 @@ const Filter = styled.button<{ $active?: boolean }>`
 
 // Props som komponenten modtager
 type GenreFiltersProps = {
+
   genres: Genre[] | null;
+
   selectedGenre: number | null;
+
   onSelect: (genreId: number | null) => void;
 };
 
 // Genre-filter komponent
 function GenreFilters({
+
   genres,
+
   selectedGenre,
+
   onSelect,
+
 }: GenreFiltersProps) {
+
   return (
+
     <Filters>
+
       <FilterTitle>Filtre</FilterTitle>
 
       {/* Vælger alle genrer */}
@@ -82,13 +92,19 @@ function GenreFilters({
       </Filter>
 
       {/* Viser alle genrer */}
+
       {genres?.map((genre) => (
+
         <Filter
+
           key={genre.id}
+
           $active={selectedGenre === genre.id}
+
           onClick={() => onSelect(genre.id)}
         >
           {genre.name}
+          
         </Filter>
       ))}
 
