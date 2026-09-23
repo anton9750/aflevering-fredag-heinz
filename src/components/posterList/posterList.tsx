@@ -47,7 +47,7 @@ function PosterList() {
         {data.map((poster) => (
           <PosterCard
 
-            key={poster.id}
+            
 
             title={poster.name}
 

@@ -24,7 +24,7 @@ const HeroImage = styled.img`
   height: 100%;
 
   display: flex;
-  align-item: center
+  align-items: center;
 `;
 
 function Home() {

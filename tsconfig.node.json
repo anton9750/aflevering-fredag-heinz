@@ -1,23 +1,35 @@
 {
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "target": "es2023",
-    "lib": ["ES2023"],
-    "types": ["node"],
+    "target": "ES2022",
+
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    "types": ["node", "react", "react-dom"],
+
+    "jsx": "react-jsx",
+
+    "strict": true,
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
 
-    /* Bundler mode */
-    "module": "nodenext",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
-    "noEmit": true,
+    "sourceMap": true,
 
-    /* Linting */
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true
+    "verbatimModuleSyntax": false,
+
+    "isolatedModules": true,
+
+    "noUncheckedSideEffectImports": true,
+
+    "moduleDetection": "force"
   },
-  "include": ["vite.config.ts"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
