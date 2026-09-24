@@ -22,7 +22,7 @@ Brugeren kan browse filmplakater sorteret efter genre, åbne den enkelte plakat 
 
 ### Installation
 
-```bash
+
 git clone https://github.com/anto0784/wallywood-frontend-fredag.git
 cd wallywood-frontend-fredag
 npm install
@@ -30,15 +30,15 @@ npm install
 
 ### Kør projektet
 
-```bash
+
 npm run dev
-```
+
 
 Sitet kører herefter på `http://localhost:5173` (standard Vite-port).
 
 ### Andre kommandoer
 
-```bash
+
 npm run build     # Bygger projektet til produktion
 npm run preview   # Kører en lokal preview af build'et
 npm run lint      # Kører ESLint
@@ -64,7 +64,7 @@ Kurven er implementeret med React Context, så alle sider har adgang til samme k
 
 ## Projektstruktur
 
-```
+
 src/
 ├── assets/                     # Billeder og ikoner
 ├── components/
@@ -94,9 +94,3 @@ src/
 │   └── cards.tsx                 # Genanvendeligt plakat-kort
 ├── App.tsx                       # Routing
 └── main.tsx                      # Wrapper: BrowserRouter + CartProvider
-```
-
-## Kommende arbejde
-
-- Mulighed for at ændre antal af en plakat i kurven
-- Gemme kurven i `localStorage`, så den ikke nulstilles ved genindlæsning
