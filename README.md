@@ -23,7 +23,7 @@ Brugeren kan browse filmplakater sorteret efter genre, åbne den enkelte plakat 
 ### Installation
 
 
-git clone https://github.com/anto0784/wallywood-frontend-fredag.git
+gh repo clone anton9750/aflevering-fredag-heinz
 cd wallywood-frontend-fredag
 npm install
 ```
