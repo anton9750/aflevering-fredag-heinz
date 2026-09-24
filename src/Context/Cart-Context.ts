@@ -1,4 +1,3 @@
-
 import { createContext } from "react";
 
 // Type for et produkt i kurven
@@ -15,15 +14,17 @@ export type CartContextType = {
   // Alle produkter i kurven
   items: CartItem[];
 
-  // Tilføjer et produkt til kurven
+  // Tilføjer et produkt til kurven (eller øger antallet hvis det allerede er der)
   addToCart: (poster: CartItem) => void;
 
   // Fjerner et produkt fra kurven
   removeFromCart: (id: number) => void;
+
+  // Ændrer antallet af et bestemt produkt
+  updateQuantity: (id: number, quantity: number) => void;
 };
 
 // Opretter context til kurven
 export const CartContext = createContext<CartContextType | undefined>(
   undefined
 );
-
