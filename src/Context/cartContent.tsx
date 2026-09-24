@@ -38,7 +38,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         return prev.map((item) =>
           item.id === poster.id
             ? { ...item, quantity: item.quantity + 1 }
-            : item
+            : item //ternary
         );
       }
 
@@ -65,7 +65,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
     // Opdaterer antallet på den valgte vare
     setItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
+      prev.map((item) => (item.id === id ? { ...item, quantity } : item))    //prev- forrige state
     );
   }
 
