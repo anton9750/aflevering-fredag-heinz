@@ -23,7 +23,7 @@ Brugeren kan browse filmplakater sorteret efter genre, åbne den enkelte plakat 
 ### Installation
 
 ```bash
-git clone https://github.com/<dit-brugernavn>/wallywood-frontend-fredag.git
+git clone https://github.com/anto0784/wallywood-frontend-fredag.git
 cd wallywood-frontend-fredag
 npm install
 ```
