@@ -75,7 +75,7 @@ function PosterGrid() {
         
         poster.genres.some((g) => g.genreId === selectedGenre) //strict equality operator.
       )
-    : data;
+    : data; //hvis data kan filtere brug data, ellers brug hele data :))
 
   return (
     <Grid>
