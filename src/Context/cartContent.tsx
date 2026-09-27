@@ -7,7 +7,7 @@ import type { CartItem } from "./Cart-Context"
 const STORAGE_KEY = "wallywood-cart";
 
 // Provider til kurvens state
-export function CartProvider({ children }: { children: ReactNode }) {
+export function CartProvider({ children }: { children: ReactNode }) { //alle dem som children typisk kan inherit
 
   // Opretter state til varer i kurven
   // Funktionen kører kun ved første render og henter den gemte kurv
@@ -36,9 +36,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
       // Hvis den findes, øges antallet med 1 i stedet for at oprette en ny række
       if (existing) {
         return prev.map((item) =>
-          item.id === poster.id
+          item.id === poster.id //strict equality operator.
             ? { ...item, quantity: item.quantity + 1 }
-            : item //ternary
+            : item //ternary //eksisterende item return
         );
       }
 
